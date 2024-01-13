@@ -1,0 +1,47 @@
+# ============================================================================
+#   Ver  :| Author					:| Mod. Date :| Changes Made:
+#   V1.1 :| Shehab Hesham			:| 05/11/2023:| Script Created
+# ============================================================================
+
+import cv2
+from google.colab import files
+
+def image_to_hex(image_path):
+    # Read the image
+    img = cv2.imread(image_path)
+
+    if img is None:
+        print("Error: Unable to read the image.")
+        return
+
+    # Convert image from BGR to RGB format
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+    # Get image dimensions
+    height, width, _ = img.shape
+
+    # Create output files for R, G, and B
+    with open("R.hex", "w") as file_r, open("G.hex", "w") as file_g, open("B.hex", "w") as file_b:
+        # Iterate through each pixel and write to the respective files
+        for y in range(height):
+            for x in range(width):
+                # Get the RGB values of the pixel
+                r, g, b = img[y, x]
+
+                # Write pixel values to the respective files
+                file_r.write(f"{r:02X}\n")  # Convert to 2-digit hexadecimal
+                file_g.write(f"{g:02X}\n")
+                file_b.write(f"{b:02X}\n")
+
+    # Save files to Colab environment
+    files.download("R.hex")
+    files.download("G.hex")
+    files.download("B.hex")
+
+    print("Files downloaded. Conversion to hex completed.")
+
+if __name__ == "__main__":
+    # Replace 'your_image.jpg' with the path to your image file
+    #image_path = '/content/your_image.jpg'  # Upload your image to Colab first
+    image_path = '/content/640x480-white-solid-color-background.jpg'
+    image_to_hex(image_path)
