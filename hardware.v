@@ -1,6 +1,6 @@
 // ============================================================================
 //   Ver  :| Author					:| Mod. Date :| Changes Made:
-//   V1.1 :| Shehab Hesham			:| 10/10/2024:| Added Verilog file
+//   V1.1 :| Shehab Hesham			:| 10/10/2023:| Added Verilog file
 // ============================================================================
 
 
@@ -210,8 +210,7 @@ module hardware(
 	 .RED_out(VGA_R), 
 	 .GREEN_out(VGA_G),
 	 .BLUE_out(VGA_B)
-					); 
-
+					);
 
 
 endmodule
