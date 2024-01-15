@@ -129,8 +129,6 @@ module hardware(
 
 
   wire clock_out; 
-  reg neg_reset;
-  reg [9:0] switches ; 
   
   // Outputs
   wire [7:0] read_data_R;
@@ -176,8 +174,8 @@ module hardware(
 										
 	IMAGE_PROCESSING #(100, 100, 127) IP (
 	 .clock(clock_out),
-	 .neg_reset(neg_reset),
-	 .IP_decision_switches(switches),
+	 .neg_reset(KEY[0]),
+	 .IP_decision_switches(SW),
 	 .RED_values(read_data_R),
 	 .GREEN_values(read_data_G),
 	 .BLUE_values(read_data_B),
